@@ -35,19 +35,21 @@ day_of_week = current_date_and_time.weekday()
 
 
 subtotal = float(input("Please enter the subtotal: "))
-tax_amount = subtotal * 0.06
-total = subtotal + tax_amount
-discount = subtotal * 0.1
-day_of_week = 1
+
+day_of_week = 2
 
 
-if day_of_week == 1 and day_of_week == 2:
+if subtotal >= 50 and (day_of_week == 1 or day_of_week == 2):
+
+    discount = round(subtotal * 0.1, 2)
     print(f"Discount amount: {discount:.2f}")
-    print(f"Sales tax amount: {tax_amount:.2f}")
-    print(f"Total: {total:.2f}")
+    subtotal -= discount
 
-else:
-    print(f"Sales tax amount: {tax_amount:.2f}")
-    print(f"Total: {total:.2f}")
+tax_amount = round(subtotal * 0.06, 2)
+print(f"Sales tax amount: {tax_amount:.2f}")
+
+total = subtotal + tax_amount
+print(f"Total: {total:.2f}")
+
 
 
