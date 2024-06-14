@@ -40,6 +40,9 @@ current_date_and_time = datetime.now()
 with open("volume.txt", "at") as volume_file:
     print(f"{current_date_and_time:%Y-%m-%d}, {w}, {a}, {d}, {volume:.2f}", file=volume_file)
 
+
+##### EXECEEDING #####
+
 call_to_action = input("Do you want to buy tires with this dimensions (yes or no)? ")
 
 if call_to_action.lower() == "yes":
