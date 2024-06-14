@@ -1,0 +1,1 @@
+day_of_week = current_date_and_time.weekday()
