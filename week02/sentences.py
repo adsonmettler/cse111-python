@@ -3,15 +3,30 @@
 """ Program: Turing Test"""
 
 # Description: Basically this program gets randomly pieces of a sentence from a datatable
-# and using functions the program returns a sentence. It is a sentence generator.
+# and, by using functions, the program returns a sentence. It is a sentence generator.
+
+
+########## Exceeding the Requirements ############
+# In the exceeding activity I added another call to get_prepositional_phrase so that
+# each sentence includes two prepositional phrases.
 
 import random
 
 
 def main():
-    
 
-
+    sentence_a = make_sentence(1, "past")
+    print(f"{sentence_a.capitalize()}.")
+    sentence_b = make_sentence(1, "present")
+    print(f"{sentence_b.capitalize()}.")
+    sentence_c = make_sentence(1, "future")
+    print(f"{sentence_c.capitalize()}.")
+    sentence_d = make_sentence(2, "past")
+    print(f"{sentence_d.capitalize()}.")
+    sentence_e = make_sentence(2, "present")
+    print(f"{sentence_e.capitalize()}.")
+    sentence_f = make_sentence(2, "future")
+    print(f"{sentence_f.capitalize()}.")
 
 
 def get_determiner(quantity):
@@ -34,6 +49,7 @@ def get_determiner(quantity):
         words = ["some", "many", "the"]
     # Randomly choose and return a determiner.
     word = random.choice(words)
+
     return word
 
 
@@ -58,6 +74,7 @@ def get_noun(quantity):
         words = ["birds", "boys", "cars", "cats", "children", "dogs", "girls", "men", "rabbits", "women"]
     # Randomly choose and return a noun.
     word = random.choice(words)
+
     return word
 
 def get_verb(quantity, tense):
@@ -94,6 +111,7 @@ def get_verb(quantity, tense):
     elif tense == "future":
         verbs = ["will drink", "will eat", "will grow", "will laugh", "will think", "will run", "will sleep", "will talk", "will walk", "will write"]
     verb = random.choice(verbs)
+
     return verb
 
 def make_sentence(quantity, tense):
@@ -104,7 +122,62 @@ def make_sentence(quantity, tense):
     quantity and tense of the verb will match the number
     and tense in the quantity and tense parameters.
     """
-    if 
+    ########## Exceeding the Requirements ############
+    # In the exceeding activity I added another call to get_prepositional_phrase so that
+    # each sentence includes two prepositional phrases.
+
+    if quantity == 1 and tense == "past":
+        sentence = get_determiner(1) + " " + get_noun(1) + " " + get_prepositional_phrase(1) + " " + get_verb(1, "past") + " " + get_prepositional_phrase(1)
+    elif quantity == 1 and tense == "present":
+        sentence = get_determiner(1) + " " + get_noun(1) + " " + get_prepositional_phrase(1) + " " + get_verb(1, "present") + " " + get_prepositional_phrase(1)
+    elif quantity == 1 and tense == "future":
+        sentence = get_determiner(1) + " " + get_noun(1) + " " + get_prepositional_phrase(1) + " " + get_verb(1, "future") + " " + get_prepositional_phrase(1)
+    elif quantity != 1 and tense == "past":
+        sentence = get_determiner(quantity!=1) + " " + get_noun(quantity!=1) + " " + get_prepositional_phrase(quantity!=1) + " " + get_verb(quantity!=1, "past") + " " + get_prepositional_phrase(quantity!=1)
+    elif quantity != 1 and tense == "present":
+        sentence = get_determiner(quantity!=1) + " " + get_noun(quantity!=1) + " " + get_prepositional_phrase(quantity!=1) + " " + get_verb(quantity!=1, "present") + " " + get_prepositional_phrase(quantity!=1)
+    elif quantity != 1 and tense == "future":
+        sentence = get_determiner(quantity!=1) + " " + get_noun(quantity!=1) + " " + get_prepositional_phrase(quantity!=1) + " " + get_verb(quantity!=1, "future") + " " + get_prepositional_phrase(quantity!=1)
+    
+    return sentence
+
+def get_preposition():
+    """Return a randomly chosen preposition
+    from this list of prepositions:
+        "about", "above", "across", "after", "along",
+        "around", "at", "before", "behind", "below",
+        "beyond", "by", "despite", "except", "for",
+        "from", "in", "into", "near", "of",
+        "off", "on", "onto", "out", "over",
+        "past", "to", "under", "with", "without"
+    Return: a randomly chosen preposition.
+    """
+    prepositions = ["about", "above", "across", "after", "along", "around", "at", "before", "behind", "below", "beyond", "by", "despite", "except", "for", "from", "in", "into", "near", "of", "off", "on", "onto", "out", "over", "past", "to", "under", "with", "without"]
+    
+    # Randomly choose and return a determiner.
+    preposition = random.choice(prepositions)
+
+    return preposition
+
+
+def get_prepositional_phrase(quantity):
+    """Build and return a prepositional phrase composed
+    of three words: a preposition, a determiner, and a
+    noun by calling the get_preposition, get_determiner,
+    and get_noun functions.
+    Parameter
+        quantity: an integer that determines if the
+            determiner and noun in the prepositional
+            phrase returned from this function should
+            be single or pluaral.
+    Return: a prepositional phrase.
+    """
+    if quantity == 1:
+        phrase = get_preposition() + " " + get_determiner(1) + " " + get_noun(1)
+    elif quantity !=1:
+        phrase = get_preposition() + " " + get_determiner(2) + " " + get_noun(2)
+
+    return phrase
 
 # Start this program by
 # calling the main function.
