@@ -1,3 +1,5 @@
+# Copyright 2020, Brigham Young University-Idaho. All rights reserved.
+
 """Verify that the prefix and suffix functions work correctly."""
 
 from words import prefix, suffix
@@ -9,14 +11,6 @@ def test_prefix():
     Parameters: none
     Return: nothing
     """
-    # Call the prefix function and verify that it returns a string.
-    pre = prefix("upbeat", "upgrade")
-    assert isinstance(pre, str), "prefix function must return a string"
-
-    # Call the prefix function ten times and use an assert
-    # statement to verify that the string returned by the
-    # prefix function is correct each time.
-    assert prefix("cat", "catalog") == "cat"
     assert prefix("", "") == ""
     assert prefix("", "correct") == ""
     assert prefix("clear", "") == ""
@@ -24,7 +18,7 @@ def test_prefix():
     assert prefix("cat", "catalog") == "cat"
     assert prefix("dogmatic", "dog") == "dog"
     assert prefix("jump", "joyous") == "j"
-    assert prefix("upbeat", "upgrade") == "up"
+    assert prefix("unwise", "ungrateful") == "un"
     assert prefix("Disable", "dIstasteful") == "dis"
 
 
@@ -33,7 +27,6 @@ def test_suffix():
     Parameters: none
     Return: nothing
     """
-
     assert suffix("", "") == ""
     assert suffix("", "correct") == ""
     assert suffix("clear", "") == ""
@@ -45,6 +38,6 @@ def test_suffix():
     assert suffix("swimming", "FLYING") == "ing"
 
 
-# Call the main function that is part of pytest so that the
-# computer will execute the test functions in this file.
+# Call the main function that is part of pytest so that
+# the test functions in this file will start executing.
 pytest.main(["-v", "--tb=line", "-rN", __file__])
