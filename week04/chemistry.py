@@ -3,6 +3,13 @@
 ######### CHEMISTRY CALCULATOR ############
 
 
+############# EXCEEDING REQUIREMENTS ################
+# Add a dictionary that contains known chemical formulas and their names.
+# Create a function named get_formula_name
+# Call the get_formula_name function from your main function and print the
+# compound name for the user to see with the other output.
+
+
 from formula import parse_formula
 
 def main():
@@ -25,12 +32,19 @@ def main():
     molar_mass = compute_molar_mass(symbol_quantity_list, periodic_table_dict)
     # Compute the number of moles in the sample.
     number_of_moles = mass_chemical_sample / molar_mass
-    
+    print()
     # Print the molar mass.
     print(f'Molar mass: {molar_mass} g/mol')
     # Print the number of moles.
     print(f'Number of Moles: {number_of_moles}')
+    print()
 
+
+    ############# EXCEEDING REQUIREMENTS ################
+    known_molecules_dict = make_known_molecules()
+    compound_name = get_formula_name(formula, known_molecules_dict)
+    print(f"The molecula's name is: {compound_name}")
+    print()
 
 
 def make_periodic_table():
@@ -136,6 +150,55 @@ def make_periodic_table():
     return periodic_table_dict
 
 
+############# EXCEEDING REQUIREMENTS ################
+
+def make_known_molecules():
+
+    known_molecules_dict = {
+        "Al2O3": "aluminum oxide",
+        "CH3OH": "methanol",
+        "C2H6O": "ethanol",
+        "C2H5OH": "ethanol",
+        "C3H8O": "isopropyl alcohol",
+        "C3H8": "propane",
+        "C4H10": "butane",
+        "C6H6": "benzene",
+        "C6H14": "hexane",
+        "C8H18": "octane",
+        "CH3(CH2)6CH3": "octane",
+        "C13H18O2": "ibuprofen",
+        "C13H16N2O2": "melatonin",
+        "Fe2O3": "iron oxide",
+        "FeS2": "iron pyrite",
+        "H2O": "water"
+    }
+
+    return known_molecules_dict
+
+
+############# EXCEEDING REQUIREMENTS ################
+
+def get_formula_name(formula, known_molecules_dict):
+    """Try to find formula in the known_molecules_dict.
+    If formula is in the known_molecules_dict, return
+    the name of the chemical formula; otherwise return
+    "unknown compound".
+    Parameters
+        formula is a string that contains a chemical formula
+        known_molecules_dict is a dictionary that contains
+            known chemical formulas and their names
+    Return: the name of a chemical formula
+    """
+
+    known_molecules_dict = make_known_molecules()
+    if formula in known_molecules_dict:
+        formula_name = known_molecules_dict[formula]
+        return formula_name
+    else:
+        unknown_message = "Unknown compound."
+        return unknown_message
+
+
 # Indexes for inner lists in the periodic table
 NAME_INDEX = 0
 ATOMIC_MASS_INDEX = 1
@@ -166,21 +229,15 @@ def compute_molar_mass(symbol_quantity_list, periodic_table_dict):
 
     
     for element in symbol_quantity_list:
+        # Separate the inner list into symbol and quantity.
         symbol = element[SYMBOL_INDEX]
         quantity = element[QUANTITY_INDEX]
-
-        atomic_mass = periodic_table_dict[symbol][1]
-        
-        total_molar_mass += atomic_mass * quantity
-
-
-
-    # Do the following for each inner list in the
-    # compound symbol_quantity_list:
-        # Separate the inner list into symbol and quantity.
         # Get the atomic mass for the symbol from the dictionary.
+        atomic_mass = periodic_table_dict[symbol][1]
         # Multiply the atomic mass by the quantity.
         # Add the product into the total molar mass.
+        total_molar_mass += atomic_mass * quantity
+                
     # Return the total molar mass.
     return total_molar_mass
 
