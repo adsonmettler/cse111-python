@@ -41,8 +41,11 @@ def main():
 
 
     ############# EXCEEDING REQUIREMENTS ################
+    # Call the make_known_molecules function and store in the known_molecules_dict variable.
     known_molecules_dict = make_known_molecules()
+    # Call the get_formula_name function to store the molecule's name into the compound_name variable.
     compound_name = get_formula_name(formula, known_molecules_dict)
+    # Print the statement with the compound name.
     print(f"The molecula's name is: {compound_name}")
     print()
 
@@ -192,6 +195,7 @@ def get_formula_name(formula, known_molecules_dict):
 
     known_molecules_dict = make_known_molecules()
     if formula in known_molecules_dict:
+        # Get the name for the formula_name from the dictionary.
         formula_name = known_molecules_dict[formula]
         return formula_name
     else:
