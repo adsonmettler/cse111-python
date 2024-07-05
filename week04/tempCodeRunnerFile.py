@@ -1,1 +1,1 @@
-formula = input('Enter a chemical formula for a molecula: ').capitalize()
+make_periodic_table()
