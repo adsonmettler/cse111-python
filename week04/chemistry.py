@@ -1,5 +1,7 @@
 # Author: Adson Mettler do Nascimento
 
+######### CHEMISTRY CALCULATOR ############
+
 ###### Compound List of the Periodic Table #########
 
 # The make_periodic_table function must create and return a compound list
@@ -159,10 +161,8 @@ def main():
     # Get the mass of a chemical sample in grams from the user.
     mass_chemical_sample = float(input('Enter the mass of a chemical sample in grams (ex: 23.5): '))
 
-    
     # Call the make_periodic_table function and store the periodic table in a variable.
     periodic_table_dict = make_periodic_table()
-
     # Call the parse_formula function to convert the
     # chemical formula given by the user to a compound
     # list that stores element symbols and the quantity
@@ -180,6 +180,9 @@ def main():
     print(f'Number of Moles: {number_of_moles}')
 
 
+SYMBOL = 0
+NAME = 1
+ATOMIC_MASS = 2
 
 def make_periodic_table():
 
@@ -309,10 +312,20 @@ def compute_molar_mass(symbol_quantity_list, periodic_table_dict):
 
     total_molar_mass = 0
 
+    def get_atomic_mass(symbol):
+        periodic_table = make_periodic_table()
+        if symbol in periodic_table:
+            atomic_mass = periodic_table[symbol][1]
+            return atomic_mass
+        else:
+            print(f"Symbol {symbol} not found in the periodic table.")
+
     for element in symbol_quantity_list:
         symbol = element[SYMBOL_INDEX]
         quantity = element[QUANTITY_INDEX]
-        atomic_mass = periodic_table_dict[symbol][1]  # Using index 1 for atomic mass
+
+        atomic_mass = get_atomic_mass(symbol)
+        
         total_molar_mass += atomic_mass * quantity
 
 
