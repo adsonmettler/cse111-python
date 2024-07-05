@@ -19,8 +19,6 @@ def main():
     # chemical formula given by the user to a compound
     # list that stores element symbols and the quantity
     # of atoms of each element in the molecule.
-    print(periodic_table_dict)
-    print(formula)
     symbol_quantity_list = parse_formula(formula, periodic_table_dict)
     # Call the compute_molar_mass function to compute the
     # molar mass of the molecule from the compound list.
