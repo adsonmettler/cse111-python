@@ -10,15 +10,27 @@ CSE 111 Proposal for a Student Chosen Program
     knowledge.)
 
 1. What is the title of your program?
+# Finance Control Application
 
 2. What real-world problem will your program address or help to solve?
+# This is a personal project intended to contribute to a real-world project
+# that my friends invited me to join last week. The real customer needs a
+# finance control system that can function as a database with CRUD (Create,
+# Read, Update, Delete) operations. With this database, the customer can
+# perform queries to generate reports.
 
 3. What will you learn from developing this program?
+# I will learn how to build a CRUD program using Python connected with
+# MySQL database. I will learn how to use Pandas to develop functions to
+# perform queries.
 
 4. What Python modules will your program use?
 
     (Some examples are: csv, datetime, functools, matplotlib, math,
     pandas, pytest, random, requests, and tkinter.)
+
+# In this project I beleive that I will use the following modules: csv,
+# math, pandas, pytest, mysql.connector
 
 5. List the names of functions you will need?
 
@@ -33,5 +45,19 @@ CSE 111 Proposal for a Student Chosen Program
     a result. Therefore, you should write most of your program functions
     to have parameters and return a result.)
 
+# Functions that I will develop:
+
+# create_connection() # function to connect Python to MySQL server
+# creat_entry(date, description, category, value)
+# read_entries()
+# update_entry(entry_id, date, description, category, value)
+# delete_entry(entry_id)
+# generate_report(query)
+
 6. List the names of the test functions you will write.
+# test_creat_entry(date, description, category, value)
+# test_read_entries()
+# test_update_entry(entry_id, date, description, category, value)
+# test_delete_entry(entry_id)
+# test_generate_report(query)
 
