@@ -42,7 +42,7 @@ def main():
                         ##################### Exceeding Activity #######################
                         # Apply discount to the product price if the current time of day is before 11:00 a.m.
                         discounted_price = apply_discount(product_price)
-                                
+                        
                         print(f"{product_name}: {product_quantity} @ {discounted_price:.2f}")
                         # Add the product quantity to the total
                         total_quantity += product_quantity
