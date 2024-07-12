@@ -46,7 +46,7 @@ def main():
                         print(f"{product_name}: {product_quantity} @ {discounted_price:.2f}")
                         # Add the product quantity to the total
                         total_quantity += product_quantity
-                        sum_price = product_quantity * product_price
+                        sum_price = product_quantity * discounted_price
                         # Add the sum price to the subtotal
                         subtotal_price += sum_price
                         # Calculate the sale tax of the subtotal price
