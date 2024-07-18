@@ -52,8 +52,8 @@ def populate_main_window(frm_main):
     lbl_height = Label(frm_main, text="Height:")
 
     # Create an integer entry box where the user will enter her age.
-    ent_width = IntEntry(frm_main, width=4, lower_bound=12, upper_bound=90)
-    ent_height = IntEntry(frm_main, width=4, lower_bound=12, upper_bound=90)
+    ent_width = IntEntry(frm_main, width=4, lower_bound=1, upper_bound=90)
+    ent_height = IntEntry(frm_main, width=4, lower_bound=1, upper_bound=90)
 
     # Create a label that displays "years"
     lbl_width_units = Label(frm_main, text="cm")
@@ -71,18 +71,17 @@ def populate_main_window(frm_main):
     btn_clear = Button(frm_main, text="Clear")
 
     # Layout all the labels, entry boxes, and buttons in a grid.
-    lbl_width.grid(      row=0, column=0, padx=3, pady=3)
-    lbl_height.grid(      row=1, column=0, padx=3, pady=3)
-    ent_width.grid(      row=0, column=1, padx=3, pady=3)
-    ent_height.grid(      row=1, column=1, padx=3, pady=3)
+    lbl_width.grid(row=0, column=0, padx=3, pady=3)
+    ent_width.grid(row=0, column=1, padx=3, pady=3)
     lbl_width_units.grid(row=0, column=2, padx=0, pady=3)
+    
+    lbl_height.grid(row=1, column=0, padx=3, pady=3)
+    ent_height.grid(row=1, column=1, padx=3, pady=3)
     lbl_height_units.grid(row=1, column=2, padx=0, pady=3)
-
+    
     lbl_area.grid(     row=2, column=0, padx=(30,3), pady=3)
-    lbl_width.grid(      row=1, column=2, padx=3, pady=3)
-    lbl_height.grid(      row=1, column=2, padx=3, pady=3)
     lbl_area_units.grid(row=2, column=3, padx=0, pady=3)
-
+    
     btn_clear.grid(row=3, column=0, padx=3, pady=3, columnspan=4, sticky="w")
 
 
@@ -99,24 +98,16 @@ def populate_main_window(frm_main):
 
             area = width * height
 
-            
-            
-
-
-
             # Display the slowest and fastest benficial
             # heart rates for the user to see.
 
             lbl_area.config(text=f"{area:.2f}")
             
-
         except ValueError:
             # When the user deletes all the digits in the age
             # entry box, clear the slowest and fastest labels.
             lbl_area.config(text="")
             
-
-
     # This function will be called each time
     # the user presses the "Clear" button.
     def clear():
