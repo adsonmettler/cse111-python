@@ -37,6 +37,7 @@ import pandas as pd
 
 def main():
     while True:
+        print()
         print("1. Add entry")
         print("2. View entries")
         print("3. Update entry")
@@ -44,6 +45,7 @@ def main():
         print("5. Generate report")
         print("6. Exit")
         choice = input("Choose an option: ")
+        print()
 
         if choice in ['1', '3', '4']:
             table = input("Enter table name: ")
@@ -68,9 +70,10 @@ def main():
             entry_id = int(input("Enter entry ID to delete: "))
             delete_entry(table, entry_id)
         elif choice == '5':
-            query = input("Enter SQL query for report: ")
+            query = input("Enter SQL query for report (ex: SELECT * FROM finance): ")
             report = generate_report(query)
             print(report)
+            print()
         elif choice == '6':
             break
         else:
@@ -90,7 +93,7 @@ def create_connection():
         password="narf1987",
         database="finance_db"
     )
-# function to enter new data
+# function to enter new data to database finance_db
 def create_entry(table, data):
     conn = create_connection()
     cursor = conn.cursor()
@@ -100,7 +103,7 @@ def create_entry(table, data):
     cursor.execute(sql, list(data.values()))
     conn.commit()
     conn.close()
-# function to read data
+# function to read data from database finance_db.
 def read_entries(table):
     conn = create_connection()
     cursor = conn.cursor()
@@ -108,7 +111,7 @@ def read_entries(table):
     rows = cursor.fetchall()
     conn.close()
     return rows
-# function to update date
+# function to update date from database finance_db.
 def update_entry(table, entry_id, data):
     conn = create_connection()
     cursor = conn.cursor()
@@ -117,7 +120,7 @@ def update_entry(table, entry_id, data):
     cursor.execute(sql, list(data.values()) + [entry_id])
     conn.commit()
     conn.close()
-# function to delete specific data in an specific table from database
+# function to delete specific data in an specific table from database finance_db.
 def delete_entry(table, entry_id):
     conn = create_connection()
     cursor = conn.cursor()
@@ -126,7 +129,7 @@ def delete_entry(table, entry_id):
     conn.close()
 
 import pandas as pd
-# function to generate report
+# function to generate report from database finance_db.
 def generate_report(query):
     conn = create_connection()
     df = pd.read_sql_query(query, conn)
