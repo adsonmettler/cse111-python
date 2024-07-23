@@ -1,3 +1,4 @@
+
 """
 Author: Adson Mettler do Nascimento
 
@@ -33,9 +34,53 @@ Author: Adson Mettler do Nascimento
 
 import mysql.connector
 import pandas as pd
+from datetime import datetime
+
 
 
 def main():
+
+    ######### Before running the CRUD functions the program will create a database in my localhost
+    # to simulate a database to perform entries, reading, updates, and delete operations.
+
+    # Connect to MySQL server
+    conn = mysql.connector.connect(
+        host="localhost",
+        port=3306,
+        user="root",
+        password="narf1987"
+    )
+
+    cursor = conn.cursor()
+
+    # Create database
+    cursor.execute("CREATE DATABASE IF NOT EXISTS finance_db")
+
+    # Connect to the new database
+    conn.database = 'finance_db'
+
+    # Create finance table
+    cursor.execute('''CREATE TABLE IF NOT EXISTS finance (
+                        id INT AUTO_INCREMENT PRIMARY KEY,
+                        date DATE,
+                        description VARCHAR(255),
+                        category VARCHAR(255),
+                        amount DECIMAL(10, 2)
+                    )''')
+
+    # Create budget table
+    cursor.execute('''CREATE TABLE IF NOT EXISTS budget (
+                        id INT AUTO_INCREMENT PRIMARY KEY,
+                        month VARCHAR(255),
+                        category VARCHAR(255),
+                        amount DECIMAL(10, 2)
+                    )''')
+
+    conn.commit()
+    conn.close()
+
+
+
     while True:
         print()
         print("1. Add entry")
@@ -48,15 +93,12 @@ def main():
         print()
 
         if choice in ['1', '3', '4']:
-            table = input("Enter table name: ")
+            table = input("Enter table name (type finance or budget): ").lower()
         
         if choice == '1':
-            columns = input("Enter columns (comma separated): ").split(',')
-            values = [input(f"Enter {column}: ") for column in columns]
-            data = dict(zip(columns, values))
-            create_entry(table, data)
+            create_entry(table)
         elif choice == '2':
-            table = input("Enter table name: ")
+            table = input("Enter table name (type finance or budget): ").lower()
             entries = read_entries(table)
             for entry in entries:
                 print(entry)
@@ -93,16 +135,43 @@ def create_connection():
         password="narf1987",
         database="finance_db"
     )
+
+def get_columns(table):
+    conn = create_connection()
+    cursor = conn.cursor()
+    cursor.execute(f"DESCRIBE {table}")
+    columns = [row[0] for row in cursor.fetchall()]
+    conn.close()
+    return columns
+
 # function to enter new data to database finance_db
-def create_entry(table, data):
+def create_entry(table):
+    columns = get_columns(table)
+    data = {}
+    
+    # Automatically add current date to the data dictionary for 'finance' table if date column exists
+    if table == 'finance' and 'date' in columns:
+        data['date'] = datetime.now().date()
+    
+    print(f"Enter data for table '{table}':")
+    for column in columns:
+        if column == 'id':  # Skip ID if it's auto-incremented
+            continue
+        if column == 'date':  # Skip date input if it's auto-filled
+            continue
+        value = input(f"Enter {column}: ")
+        data[column] = value
+    
+    # To Build SQL statement to insert data into table
     conn = create_connection()
     cursor = conn.cursor()
     placeholders = ', '.join(['%s'] * len(data))
-    columns = ', '.join(data.keys())
-    sql = f"INSERT INTO {table} ({columns}) VALUES ({placeholders})"
+    columns_str = ', '.join(data.keys())
+    sql = f"INSERT INTO {table} ({columns_str}) VALUES ({placeholders})"
     cursor.execute(sql, list(data.values()))
     conn.commit()
     conn.close()
+
 # function to read data from database finance_db.
 def read_entries(table):
     conn = create_connection()
