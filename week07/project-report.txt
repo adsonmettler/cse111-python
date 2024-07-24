@@ -30,9 +30,10 @@ doing any of the following:
 2024-07-23      2.0     Wrote the five test program functions proposed.
 2024-07-23      1.0     Debugging the output erros found in the test program.
 2024-07-23      2.0     Researching for solution to the test program.
-2024-07-24      2.0     Rercoded a video to show how to install MySQL. Link for the video: https://www.loom.com/share/3895f16ec2e24cbd9ce3805e7376c9ba?sid=6a60d8e2-4b2b-4934-819d-0ffd0b1f764f
-2024-07-24      2.0     Rercoded a video to show the program working. Link for the video: https://www.loom.com/share/35db29a204854840b51312ee4bb029e0?sid=70892e80-f803-4d95-b413-46f172aee6f6
+2024-07-24      1.0     Rercoded a video to show how to install MySQL. Link for the video: https://www.loom.com/share/3895f16ec2e24cbd9ce3805e7376c9ba?sid=6a60d8e2-4b2b-4934-819d-0ffd0b1f764f
+2024-07-24      1.0     Rercoded a video to show the program working. Link for the video: https://www.loom.com/share/35db29a204854840b51312ee4bb029e0?sid=70892e80-f803-4d95-b413-46f172aee6f6
 2024-07-24      0.5     Draw call graph.
+2024-07-24      2.0     Debugging the output erros found in the test program.
 =============Report====================
 
 
