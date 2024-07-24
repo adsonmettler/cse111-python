@@ -1,0 +1,42 @@
+Second Report for a Student Chosen Project
+
+Student Name: Adson Mettler do Nascimento
+
+Do the following:
+
+1. In the table below, list the dates, amount of time spent, and
+description of the work that you did on your project. Follow the example
+that is in the first row of the table below. Include the time you spent
+doing any of the following:
+    a. discussing your project with your teacher, tutor, or fellow students
+    b. researching by reading articles and watching applicable videos
+    c. designing your project by drawing diagrams and other applicable documents
+    d. writing experimental code
+    d. writing code for your project
+    e. writing test functions
+    f. debugging your code
+    g. any other activity that helped you complete your project
+
+=============Report====================
+            Time Spent
+   Date       (hours)   Description of Work
+----------  ----------  -------------------------
+2024-07-12      1.0     Meet the main project owner (friend) to understand the need for a CRUD solution.
+2024-07-15      4.0     Wrote six program functions and the main() function.
+2024-07-16      2.0     Researching how to establish a connection between a Python program and MySQL.
+2024-07-16      2.0     Fixing the connection function to connect with MySQL database.
+2024-07-22      2.0     Wrote an additional function, get_columns(), to automatically fill in the columns instead of asking the user.
+2024-07-22      1.0     Adjusted the create_entry() function to automatically create an ID and use today's date instead of asking the user.
+2024-07-23      2.0     Wrote the five test program functions proposed.
+2024-07-23      1.0     Debugging the output erros found in the test program.
+2024-07-23      2.0     Researching for solution to the test program.
+2024-07-24      2.0     Rercoded a video to show how to install MySQL.
+2024-07-24      2.0     Rercoded a video to show the program working.
+2024-07-24      0.5     Draw call graph.
+=============Report====================
+
+
+
+2. In Canvas, submit this completed text file, your Python program, your
+Python test file, and any project data files such as .txt and .csv files and
+link to video walkthrough if needed.
